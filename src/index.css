@@ -64,3 +64,12 @@ canvas{
   float: left;
   
 }
+
+.instruction{
+  position: absolute;
+  text-align: center;
+  color: white;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+}

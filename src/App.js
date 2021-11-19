@@ -49,6 +49,7 @@ function App() {
       <button id={'buttonkurek'} onClick={(event) => changekurek()}>Color</button>
       
       <Display isVisible={isDisplay ? 'visible' : 'hidden'} closeDisplay={closeDetails} />
+      <p className={'instruction'}>[Click on color part to open/close valve]</p>
     </div>
 
   );
