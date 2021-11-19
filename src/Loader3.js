@@ -13,7 +13,7 @@ export function Kurek2(props) {
   const myMesh = useRef();
   const gltf = useLoader(GLTFLoader, '/zawor_kulowy_three_kula3_kurek.glb')
   //animatio segment start
-  const {rotation}= useSpring({ rotation: active ? [0,0,0] : [0,Math.PI/2,0], config: { duration: 3000 } })
+  const {rotation,position}= useSpring({ rotation: active ? [0,0,0] : [0,Math.PI/2,0], position: active ?[0,0,0] : [-0.05,0,-0.07], config: { duration: 3000 } })
   
  
   // animation segment end
@@ -21,7 +21,7 @@ export function Kurek2(props) {
   return (
     <>
       <OrbitControls />
-      <animated.mesh rotation={rotation}  ref={myMesh}>
+      <animated.mesh rotation={rotation} position={position}  ref={myMesh}>
       <primitive object={gltf.scene} dispose={null}  onClick={() => setActive(!active)} />
       </animated.mesh>
      

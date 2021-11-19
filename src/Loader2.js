@@ -16,14 +16,14 @@ export function Kurek(props) {
 
   //animatio segment start
   //add change position
-  const {rotation}= useSpring({ rotation: active ? [0,0,0] : [0,Math.PI/2,0], config: { duration: 3000 }  })
+  const {rotation,position}= useSpring({ rotation: active ? [0,0,0] : [0,Math.PI/2,0], position: active ?[0,0,0] : [-0.05,0,-0.07] ,config: { duration: 3000 }  })
  
   // animation segment end
 
   return (
     <>
       <OrbitControls />
-      <animated.mesh rotation={rotation} onClick={() => setActive(!active)} ref={myMesh}>
+      <animated.mesh rotation={rotation} position={position} onClick={() => setActive(!active)} ref={myMesh}>
       <primitive object={gltfcopy} dispose={null} />
       </animated.mesh>
     </>
