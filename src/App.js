@@ -3,6 +3,7 @@ import './App.css';
 //import {useState} from 'react'
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
+import { Html } from '@react-three/drei'
 import { Scene } from './Loader';
 import { Kurek } from './Loader2';
 import { Kurek2 } from './Loader3';
@@ -31,6 +32,11 @@ function App() {
     setIsDisplay(false)
   }
 
+  function Loader() {
+    
+    return <Html center style={{color:'white'}}>loading assets...</Html>
+  }  
+
   return (
     <div>
       <Canvas camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 0, 4] }}>
@@ -38,9 +44,9 @@ function App() {
           <ambientLight />
           <pointLight position={[10, 20, 10]} />
           <pointLight position={[-5, -15, 30]} />
-
+          <Suspense fallback={<Loader/>}>
           <Scene showDetails={showDetailsFunc}/>
-
+         </Suspense>
           {showB && <Kurek2  />}
           {showA && <Kurek  />}
 
