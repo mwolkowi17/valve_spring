@@ -3,7 +3,7 @@
 import { useLoader} from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from "@react-three/drei";
-import {  useRef, useMemo, useState } from 'react';
+import {  useRef, useState } from 'react';
 import { useSpring, animated } from '@react-spring/three'
 
 
@@ -12,7 +12,7 @@ export function Kurek(props) {
   const [active, setActive]=useState(false)
   const myMesh = useRef();
   const gltf = useLoader(GLTFLoader, '/zawor_kulowy_three_kula3_kurek_blue.glb')
-  const gltfcopy = useMemo(() => gltf.scene.clone(), [gltf.scene])
+  //const gltfcopy = useMemo(() => gltf.scene.clone(), [gltf.scene])
 
   //animatio segment start
   //add change position
@@ -24,7 +24,7 @@ export function Kurek(props) {
     <>
       <OrbitControls />
       <animated.mesh rotation={rotation} position={position} onClick={() => setActive(!active)} ref={myMesh}>
-      <primitive object={gltfcopy} dispose={null} />
+      <primitive object={gltf.scene}  ref={myMesh} dispose={null} />
       </animated.mesh>
     </>
   )
