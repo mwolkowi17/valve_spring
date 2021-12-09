@@ -3,7 +3,7 @@ import './App.css';
 //import {useState} from 'react'
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Html } from '@react-three/drei'
+import { Html,Preload } from '@react-three/drei'
 import { Scene } from './Loader';
 import { Kurek } from './Loader2';
 import { Kurek2 } from './Loader3';
@@ -46,11 +46,13 @@ function App() {
           <pointLight position={[-5, -15, 30]} />
           <Suspense fallback={<Loader/>}>
           <Scene showDetails={showDetailsFunc}/>
-         </Suspense>
+         
           {showB && <Kurek2  />}
           {showA && <Kurek  />}
-
+          <Preload all />
+          </Suspense>
         </Suspense>
+        
       </Canvas>
       <button id={'buttonkurek'} onClick={(event) => changekurek()}>Color</button>
       
